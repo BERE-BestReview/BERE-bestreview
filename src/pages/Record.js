@@ -5,7 +5,7 @@ import { Header } from "../component/Header";
 export const Record = () => {
   return (
     <div>
-      vRecord
+      vvRecord
       <Header />
       <Footer />
     </div>
