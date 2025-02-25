@@ -15,7 +15,7 @@ export const Header = () => {
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto" id="text">
-              <Nav.Link href="/Review_Check">리뷰조회</Nav.Link>
+              <Nav.Link href="/ReviewCheck">리뷰조회</Nav.Link>
               <Nav.Link href="/Record">기록조회</Nav.Link>
               <Nav.Link href="/Statics">통계정보</Nav.Link>
               <Nav.Link href="/Login ">로그인</Nav.Link>

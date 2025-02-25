@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Create_Account = () => {
+export const CreateAccount = () => {
   return <div>Create_Account</div>;
 };

@@ -20,7 +20,7 @@
   height: 100%;
 }
 
-.div1 {
+.div11 {
   grid-area: 1 / 1 / 2 / 2;
   font-size: 1.5vw;
   text-align: center;
@@ -30,7 +30,7 @@
   border: none;
 }
 
-.div2 {
+.div12 {
   grid-area: 4 / 2 / 8 / 5;
   position: absolute;
   text-align: center;
@@ -50,24 +50,24 @@
   z-index: 2;
 }
 
-.div3,
-.div4,
-.div5 {
+.div13,
+.div14,
+.div15 {
   border: 0.2vw solid #9fa9e9;
   padding: 15px;
   margin-bottom: 5vh;
   border-radius: 1vw;
 }
 
-.div3 {
+.div13 {
   grid-area: 3 / 6 / 6 / 9;
 }
 
-.div4 {
+.div14 {
   grid-area: 6 / 6 / 9 / 9;
 }
 
-.div5 {
+.div15 {
   grid-area: 9 / 6 / 12 / 9;
 }
 
@@ -98,9 +98,9 @@
   stroke-width: 50em !important;
 }
 
-.div3,
-.div4,
-.div5 {
+.div13,
+.div14,
+.div15 {
   grid-column: 6 / 10;
   font-size: 1rem;
   padding: 10px;

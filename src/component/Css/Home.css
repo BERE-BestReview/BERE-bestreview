@@ -1,10 +1,356 @@
-.HomeImg {
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: auto; /* html의 스크롤*/
+}
+
+body {
+  overflow: hidden; /* body만 스크롤 제거 */
+}
+
+.introduceHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.parentHome {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  height: 200vh;
+  width: 100%;
+}
+
+.div0 {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../homepage_img.jpg"); /* 배경 이미지 설정 */
+  background-size: cover; /* 이미지가 영역을 덮도록 설정 */
+  background-position: center; /* 이미지 위치 조정 */
+  background-repeat: no-repeat; /* 이미지 반복 안함 */
+  display: flex;
+  justify-content: space-between; /* 텍스트와 사각형을 양쪽으로 배치 */
+  align-items: center;
+  padding-left: 10vw; /* 왼쪽 여백을 주어 텍스트를 왼쪽으로 밀기 */
+  padding-right: 10vw;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column; /* text1 아래 text2 배치 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.text1 {
+  font-size: 4vw;
+  font-weight: bold;
+  color: #3A278B; /* 텍스트 색상 */
+  text-shadow: 
+    0.1vw 0.1vw 0vw #ffffff, /* 우측 아래 */
+    -0.1vw -0.1vw 0vw #ffffff, /* 좌측 위 */
+    0.1vw -0.1vw 0vw #ffffff, /* 우측 위 */
+    -0.1vw 0.1vw 0vw #ffffff; /* 좌측 아래 */
+  margin-bottom: 1vh; /* 텍스트 간격 */
+  font-family: 'KIMM_Bold', sans-serif;
+}
+
+.text2 {
+  font-size: 2vw;
+  color: #3A278B;
+  text-shadow: 
+    0.1vw 0.1vw 0vw #ffffff, /* 우측 아래 */
+    -0.1vw -0.1vw 0vw #ffffff, /* 좌측 위 */
+    0.1vw -0.1vw 0vw #ffffff, /* 우측 위 */
+    -0.1vw 0.1vw 0vw #ffffff; /* 좌측 아래 */
+  font-family: 'KIMM_Bold', sans-serif;
+}
+
+.rectangle-container {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+  align-items: center;
+  height: 100vh;
+  width: 50%; /* 사각형이 화면 오른쪽에 배치되도록 */
+}
+
+.rectangle {
+  width: 30vw; 
+  height: 24vh;
+  padding: 1vw; 
+  background-color: #ffffff;
+  border-color: #3A278B;
+  border-width: 0.2vw;
+  border-style: solid;
+  border-radius: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);  사각형 그림자 */
+}
+
+.login-button {
+  width: 100%; /* 버튼이 사각형을 채우도록 */
+  height: 10vh;
+  border-radius: 1vw;
+  margin-bottom: 2vh; /* 버튼과 텍스트 사이 여백을 vh로 변경 */
+  background-color: #3A278B;
+  color: white;
+  font-size: 1.8vw;
+  font-family: 'D2coding';
+  transition: none; /* 마우스 호버 시 애니메이션 효과 없애기 */
+}
+
+.login-button:hover {
+  background-color: #3A278B !important; /* 기본 색상 그대로 유지 */
+  color: white !important; /* 텍스트 색상도 그대로 */
+  cursor: pointer; /* 커서 모양만 포인터로 바꾸기 */
+}
+
+/* 로그인 버튼 아이콘 */
+.login-icon {
+  width: 2.6vw;
+  margin-right: 0.5vw;
+}
+
+
+.sign-up-text {
+  font-size: 0.8vw; /* 텍스트 크기를 vw로 변경 */
+  color: #000000;
+  font-family: 'D2coding';
+  cursor: pointer; /* 마우스를 올리면 클릭 가능한 느낌 */
+}
+
+
+/* div4 스타일 */
+.div4 {
+  width: 100vw;
+  height: 80vh;
+  z-index: 1; /* 다른 요소들이 덮지 않도록 우선순위 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 사각형 안의 스타일 */
+.div4-rec {
+  width: 100%;
+  height: 100%;
+  padding: 2vw;
+  background-color: #E3E6EF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+/* 사각형 내 타이틀 컨테이너 */
+.div4-title-container {
+  display: flex;
+  flex-direction: row !important; /* 가로로 배치 */
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0vh;
+}
+
+.div4-logo-title {
+  font-size: 3.5vw; /* 'BestReview' 크기 */
+  color: #3A278B; /* 파란색 */
+  font-weight: bold;
+  font-family: 'KIMM_Bold', sans-serif; /* KIMM 폰트 */
+  margin-right: 0.5vw; /* 간격 조정 */
+}
+
+.div4-title {
+  font-size: 2.5vw; /* '의 기능' 크기 */
+  color: black; /* 검은색 */
+  font-weight: bold;
+  font-family: 'D2coding'; /* D2coding 폰트 */
+}
+
+
+/* 사각형 내 부제목 텍스트 */
+.div4-subtitle {
+  align-items: center;
+  text-align: center;
+  font-size: 1.6vw;
+  color: #000000;
+  font-family: 'D2coding';
+  margin-bottom: 0vh;
+  margin-top: 0vh;
+}
+
+/* div4-subtitle 아래에 두 개의 사각형 박스 */
+.div4-box-container {
+  display: flex;
+  justify-content: space-between; /* 박스를 가로로 배치 */
+  width: 20%; /* 전체 넓이 */
+  margin-top: 2vh; /* 서브타이틀과 사각형 간의 여백 */
+}
+
+/* 태그 박스 */
+.div4-box {
+  width: 40%; /* 각 사각형의 넓이 */
+  height: 100%;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-top: 0.2vh;
+  padding-bottom: 0.2vh;
+  background-color: #848FDB;
+  border-radius: 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+/* 박스 안의 설명 텍스트 */
+.box-text {
+  font-size: 0.9vw;
+  color: #E3E6EF;
+  font-family: 'D2coding';
+}
+
+/* 아이콘 그룹 컨테이너 */
+.icon-container {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0vh;
+}
+
+/* 이미지 & 텍스트 그룹*/
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 0vh;
+  gap: 0vh;
+}
+
+/* 아이콘 이미지 스타일 */
+.div4-image {
+  width: 35%;  /* 이미지 크기 조정 */
+  height: auto;
+  border-radius: 1vw;
+  object-fit: cover;
+}
+
+/* 아이콘 제목 텍스트 */
+.div4-icontext {
+  font-size: 1.5vw;
+  color: #000000;
+  font-family: 'D2coding';
+  margin-bottom: 0vh;
+}
+
+/* 아이콘 설명 텍스트 */
+.div4-description {
+  font-size: 1vw;
+  color: #000000;
+  font-family: 'D2coding';
+  margin-bottom: 0vh;
+}
+
+
+.div2 {
   width: 100%;
   height: auto;
+  z-index: 1;
 }
-.introduce {
-  height: 1000px;
+
+/* 슬라이드 이미지 스타일 */
+.carousel-img {
+  width: 100%;
+  height: 80vh;
+  object-fit: cover;
 }
-* {
-  font-family: "D2Coding", sans-serif;
+
+/* 기본 화살표 숨기기 */
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  display: none !important;
+}
+
+/* 슬라이드 화살표 */
+.custom-prev-arrow,
+.custom-next-arrow {
+  font-size: 2vw !important; /* 화살표 크기 조정 */
+  color: #3A278B; /* 화살표 색상 */
+  background-color: rgba(255, 255, 255, 0.5); /* 배경색 */
+  border-radius: 50%; /* 원형 모양 */
+  width: 4vw; /* 버튼의 크기 */
+  height: 4vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.custom-prev-arrow:hover,
+.custom-next-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* 호버 시 배경색 */
+  opacity: 1; /* 호버 시 불투명도 */
+}
+
+.custom-prev-arrow {
+  left: 10px;
+  position: absolute;
+  z-index: 10; /* 화살표가 슬라이드보다 위에 나타나도록 */
+}
+
+.custom-next-arrow {
+  right: 10px;
+  position: absolute;
+  z-index: 10; /* 화살표가 슬라이드보다 위에 나타나도록 */
+}
+
+.div3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 100%;
+  z-index: 1;
+}
+
+/* 리뷰 조회 버튼 스타일 */
+.review-button {
+  background-color: #BECCFF;
+  color: #000000;
+  border: 0.3vw solid #3A278B;
+  padding: 3vh 8vw;
+  font-size: 1.2vw;
+  border-radius: 100vw;
+  max-height: 2vh;
+  min-width: 30vw;
+}
+
+/* 버튼 아이콘 컨테이너 */
+.play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1vw;
+  border: 0.2vw solid #3A278B;
+  border-radius: 100%;
+  margin-left: 0.5vw;
+}
+
+/* 버튼 아이콘 스타일 */
+.play-icon {
+  font-size: 1.8vw;
+  color: #3A278B;
 }

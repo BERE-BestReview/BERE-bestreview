@@ -5,7 +5,7 @@ import "../component/Css/Search_Result.css";
 import { Progress } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const Search_Result = () => {
+export const SearchResult = () => {
   const location = useLocation();
   const { accuracy, text3, text4, text5, reviews } = location.state || {};
   const navigate = useNavigate();
@@ -50,11 +50,11 @@ export const Search_Result = () => {
       <Header />
       <div className="page-container">
         <div className="parent">
-          <button onClick={button1} className="div1">
+          <button onClick={button1} className="div11">
             상세보기
           </button>
 
-          <div className="div2">
+          <div className="div12">
             <Progress
               type="circle"
               percent={accuracy !== null ? calculateProgress(accuracy) : 0}
@@ -70,9 +70,9 @@ export const Search_Result = () => {
           <div className="grade">
             {accuracy !== null ? calculateGrade(accuracy) : "A"}
           </div>
-          <div className="div3">{text3 || ""}</div>
-          <div className="div4">{text4 || ""}</div>
-          <div className="div5">{text5 || ""}</div>
+          <div className="div13">{text3 || ""}</div>
+          <div className="div14">{text4 || ""}</div>
+          <div className="div15">{text5 || ""}</div>
         </div>
       </div>
       <Footer />

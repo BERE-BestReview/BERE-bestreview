@@ -5,7 +5,7 @@ import { List, Card, Rate, Empty } from "antd";
 import { useLocation } from "react-router-dom";
 import "../component/Css/Search_Result_Details.css";
 
-export const Search_Result_Details = () => {
+export const SearchResultDetails = () => {
   const location = useLocation();
   const { reviews } = location.state || {};
 

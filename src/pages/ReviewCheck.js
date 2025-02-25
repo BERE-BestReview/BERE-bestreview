@@ -8,7 +8,7 @@ import { RightCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 
-export const Review_Check = () => {
+export const ReviewCheck = () => {
   const [url, setUrl] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);

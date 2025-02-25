@@ -1,0 +1,338 @@
+.record-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  height: 10vh;
+  font-family: 'D2coding';
+  font-size: 3.5vh;
+  padding-left: 3vw;
+  padding-top: 4.5vh;
+  position: relative;
+  font-weight: bold;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2.5vw;
+  width: 13.1vw;
+  height: 0.4vh;
+  background-color: #3A278B;
+}
+
+/* div1 */
+.div1 {
+  height: 25vh;
+  width: 80vw;
+  font-family: 'D2coding';
+  font-size: 2svw;
+  background-color: #ffffff;
+  border: 0.2vw solid #3A278B;
+  border-radius: 2vw;
+  padding: 5vh 8vw;
+  margin: 4vh auto;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: space-between;
+  gap: 4.8vw; /* 날짜와 검색 키워드 사이의 여백을 크게 늘림 */
+  margin-top: 2vh;
+  margin-bottom: 2vh; /* 전체 여백을 더 추가하여 아래로 충분히 띄움 */
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.filter-item1 {  /* 검색 날짜 텍스트 */
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  font-family: 'D2coding';
+  color: #000000;
+}
+.filter-item2 {  /*  검색 키워드 */
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  font-family: 'D2coding';
+  color: #000000;
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.filter-item1 label {
+  font-size: 2.5vh !important;
+}
+
+.filter-item2 label {
+  font-size: 2.5vh !important;
+}
+
+.date-range-separator {
+  font-size: 2.5vh !important;
+  color: #3A278B;
+  margin: 0 0.5vw;
+}
+
+.div1 .ant-picker {
+  background-color: #ffffff;
+  border: 0.15vw solid #3A278B;
+  border-radius: 0.5vw;
+  padding: 1vh 2vw;
+}
+
+/* 아이콘 색상 변경 */
+.div1 .ant-picker .ant-picker-icon svg {
+  fill: #3A278B !important;
+  font-size: 2vh !important;
+}
+
+/* 모든 svg 아이콘 색상 변경 */
+.div1 .ant-picker svg {
+  fill: #3A278B !important;
+  font-size: 2vh !important;
+}
+
+/* 검색 날짜 스타일 */
+.filter-item1 input {
+  width: 6vw !important;  /* 검색 날짜 너비 */
+  height: 2vh !important;
+  border: 0.15vw solid #3A278B;
+}
+
+/* 날짜 입력창 안의 글씨 크기 수정 */
+.div1 .ant-picker input {
+  font-size: 1.5vh !important;  /* 글씨 크기 조정 */
+  text-align: center !important;
+}
+
+.filter-item1 label {
+  font-size: 1.2vw !important;
+}
+
+/* 검색 키워드 입력창 스타일 */
+.filter-item2 input {
+  width: 15vw !important;  /* 검색 키워드 입력창 너비 */
+  height: 4vh !important;
+  border: 0.15vw solid #3A278B;
+  font-size: 1.5vh !important;  /* 글씨 크기 고정 */
+  text-align: left;  /* 텍스트 왼쪽 정렬 */
+}
+
+.filter-item2 label {
+  font-size: 1.2vw !important;
+}
+
+/* 판단 결과 섹션 스타일 */
+.result-section {
+  margin-top: 2vh; /* .div1의 높이에서 원하는 간격만큼 설정 */
+  display: flex;
+  justify-content: flex-start; /* 버튼들을 왼쪽에 배치 */
+  align-items: center; /* 텍스트와 버튼들을 수평으로 배치 */
+  gap: 1.8vw; /* 텍스트와 버튼들 간 간격 */
+}
+
+.result-title {
+  font-family: 'D2coding';
+  font-size: 2.5vh;
+  color: #000000;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.8vw; /* 버튼들 간의 간격 */
+}
+
+/* 결과 버튼 스타일 */
+.result-button {
+  background-color: white;
+  color: #3A278B;
+  font-size: 1.5vh;
+  border: none;
+  border-radius: 0.5vw;
+  border: 0.15vw solid #3A278B;
+  padding: 1vh 2vw;
+  width: 4.4vw;
+  height: 4vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'D2coding';
+  font-size: 1.5vh;
+}
+
+/* 선택된 버튼 스타일 */
+.result-button.selected {
+  background-color: #3A278B;
+  color: white;
+}
+
+/* 선택된 버튼에서는 hover 상태를 비활성화 */
+.result-button.selected:hover {
+  background-color: #3A278B !important;
+  border: 0.15vw solid #3A278B !important;
+  color: white !important;
+}
+
+/* 비선택 버튼에서는 hover 시 색상 변경 */
+.result-button:hover {
+  background-color: white;
+  border: 0.15vw solid #3A278B !important;
+  color: #3A278B !important;
+}
+
+/* 초기화 및 검색 버튼 */
+.reset-button, .search-button {
+  background-color: #DCDDFF;
+  color: black;
+  font-size: 1.5vh;
+  border: 0.15vw solid #3A278B;
+  border-radius: 0.5vw;
+  padding: 1vh 2vw;
+  width: 6vw;
+  height: 4vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'D2coding';
+}
+
+/* 버튼들을 같은 줄에 배치하고 오른쪽 정렬 */
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽으로 정렬 */
+  gap: 1vw; /* 버튼 간 간격 */
+  margin-top: 6vh; /* 위쪽 여백을 더 추가하여 버튼과 다른 섹션 간 간격을 크게 만듦 */
+  margin-left: auto; /* 왼쪽 여백을 자동으로 주어 버튼들을 오른쪽으로 보내기 */
+  margin-right: 0vw; /* 오른쪽 여백을 늘려서 오른쪽 버튼들 간 간격 확장 */
+}
+
+/* 초기화 및 검색 버튼 hover */
+.reset-button:hover, .search-button:hover {
+  background-color: white;
+  border: 0.15vw solid #3A278B !important;
+  color: #3A278B !important;
+}
+
+/* 새로운 스타일 추가: 판단 결과와 초기화 및 검색을 구분하는 레이아웃 */
+.result-wrapper {
+  display: flex;
+  justify-content: space-between; /* 왼쪽과 오른쪽으로 나누기 */
+  align-items: center;
+  width: 100%; /* 전체 너비 */
+}
+
+.result-button-wrapper {
+  display: flex;
+  gap: 0.8vw; /* 버튼들 간의 간격 */
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1vw; /* 오른쪽 버튼 간 간격 */
+  margin-top: 2vh;
+}
+
+
+.div5 {
+  height: 40vh;
+  margin-top: 0vh;
+  margin-bottom: 3vh;
+}
+
+.record-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 9.4vw;  /* 왼쪽 여백 */
+  margin-right: 9.4vw;
+}
+
+.table-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* 위에서 아래로 정렬 */
+  justify-content: flex-start; /* 테이블을 위쪽에 정렬 */
+  align-items: center; /* 테이블을 수평 중앙에 정렬 */
+  padding: 3vh; /* 여백을 추가하여 테두리와 테이블 사이에 간격을 두기 */
+  border: 0.2vw solid #3A278B; /* 사각형 테두리 추가 */
+  border-radius: 2vw; /* 둥근 테두리 */
+  background-color: white; /* 배경색을 흰색으로 설정 */
+  position: relative; /* 페이지네이션의 절대 위치 기준을 부모로 설정 */
+}
+
+
+/* 테이블 스타일 수정 */
+table {
+  width: 80%;
+  border-collapse: separate; /* 셀 경계선 분리 */
+  border-spacing: 0; /* 셀 간격을 0으로 설정 */
+}
+
+/* 셀 경계선 스타일 */
+th, td {
+  padding: 1vh;
+  text-align: center;
+  border-top: 0.1vw solid #848FDB; /* 위쪽 경계선만 표시 */
+  height: 4.5vh;
+}
+
+/* 테이블 헤더와 데이터 셀의 스타일 */
+th {
+  background-color: #ffffff;
+  color: black;
+  font-family: "D2coding";
+  font-size: 2vh;
+  font-weight: normal;
+  border-bottom: 0.2vw solid #3A278B; /* 헤더 아래에 굵은 선 추가 */
+  border-top: none;
+}
+
+td {
+  background-color: #ffffff;
+  color: black;
+  font-family: "D2coding";
+  font-size: 1.5vh;
+  font-weight: normal;
+}
+
+/* 검색 기록이 존재하지 않는 경우 메시지 스타일 */
+.no-records-message {
+  color: #7F7F7F; /* 원하는 색상 (예: Tomato) */
+  font-size: 2vh;  /* 적절한 크기 */
+  font-family: 'D2coding';
+  font-weight: normal;  /* 강조할 경우 */
+  text-align: center; /* 중앙 정렬 */
+  margin-top: 2vh;    /* 적당한 상단 여백 */
+}
+
+/* 페이지네이션 */
+.table-pagination-wrapper {
+  position: absolute;  /* 페이지네이션을 절대 위치로 고정 */
+  bottom: 0;  /* 부모 컨테이너 하단에 고정 */
+  left: 50%;  /* 수평 중앙 정렬 */
+  transform: translateX(-50%);  /* 중앙 정렬 */
+  margin-bottom: 4vh;  /* 더 이상 여백 필요 없음 */
+}
+
+/* 페이지네이션 크기 줄이기 */
+.ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+  font-size: 1.5vh !important;  /* 페이지네이션 아이템의 크기 줄이기 */
+  font-family: "D2coding";
+  width: 2% !important;
+  height: 2% !important;
+}
+
