@@ -40,7 +40,7 @@ export const SearchResult = () => {
   };
 
   const button1 = () => {
-    navigate("/Search_Result_Details", {
+    navigate("/SearchResultDetails", {
       state: { reviews, accuracy, text3, text4, text5 },
     });
   };
@@ -68,7 +68,7 @@ export const SearchResult = () => {
             />
           </div>
           <div className="grade">
-            {accuracy !== null ? calculateGrade(accuracy) : "A"}
+            {accuracy !== null ? calculateGrade(accuracy) : ""}
           </div>
           <div className="div13">{text3 || ""}</div>
           <div className="div14">{text4 || ""}</div>

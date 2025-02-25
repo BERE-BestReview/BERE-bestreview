@@ -59,7 +59,7 @@ export const ReviewCheck = () => {
 
       if (response.ok) {
         console.log("Response from backend: ", data);
-        navigate("/Search_Result", {
+        navigate("/SearchResult", {
           state: {
             reviews: data.reviews,
             accuracy: data.accuracy,
