@@ -5,6 +5,7 @@ import { Carousel, Button, Flex, Radio } from "antd";
 import { PlayCircleFilled } from "@ant-design/icons"; 
 import { useNavigate } from "react-router-dom"; 
 import "../component/Css/Home.css";
+import HomeImg from "../homepage_img.jpg";
 import ResultImg1 from "../result1.png";
 import ResultImg2 from "../result2.png";
 import ResultImg3 from "../result3.png";
@@ -30,11 +31,14 @@ const Home = () => {
     <> 
       <Header /> 
       <article>
+      <img src={HomeImg} alt="홈 배경" className="home-background"></img>
         <div className="div0">
           <div className="text-container">
             <div className="text1">BestReview</div>
             <div className="text2">가짜리뷰탐지시스템</div>
           </div>
+        
+
 
           <div className="rectangle-container">
             <div className="rectangle">
@@ -47,10 +51,10 @@ const Home = () => {
                 <img src={MainlogImg} alt="" className="login-icon" />
                 로그인
               </Button>
-              <div className="sign-up-text">회원가입</div>
             </div>
           </div>
         </div>
+
 
         <div className="introduceHome"> 
           <div className="parentHome"> 

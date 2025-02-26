@@ -28,16 +28,22 @@ body {
 
 .div0 {
   width: 100vw;
-  height: 100vh;
-  background-image: url("../../homepage_img.jpg"); /* 배경 이미지 설정 */
-  background-size: cover; /* 이미지가 영역을 덮도록 설정 */
-  background-position: center; /* 이미지 위치 조정 */
-  background-repeat: no-repeat; /* 이미지 반복 안함 */
+  height: 80vh;
   display: flex;
   justify-content: space-between; /* 텍스트와 사각형을 양쪽으로 배치 */
   align-items: center;
   padding-left: 10vw; /* 왼쪽 여백을 주어 텍스트를 왼쪽으로 밀기 */
   padding-right: 10vw;
+}
+
+.home-background {
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+  background-size: cover; /* 이미지가 영역을 덮도록 설정 */
+  background-position: center; /* 이미지 위치 조정 */
+  background-repeat: no-repeat; /* 이미지 반복 안함 */
+  z-index: -1; /* 텍스트 위로 올라오지 않게 뒤로 보냄 */
 }
 
 .text-container {
@@ -98,7 +104,6 @@ body {
   width: 100%; /* 버튼이 사각형을 채우도록 */
   height: 10vh;
   border-radius: 1vw;
-  margin-bottom: 2vh; /* 버튼과 텍스트 사이 여백을 vh로 변경 */
   background-color: #3A278B;
   color: white;
   font-size: 1.8vw;
@@ -119,14 +124,6 @@ body {
 }
 
 
-.sign-up-text {
-  font-size: 0.8vw; /* 텍스트 크기를 vw로 변경 */
-  color: #000000;
-  font-family: 'D2coding';
-  cursor: pointer; /* 마우스를 올리면 클릭 가능한 느낌 */
-}
-
-
 /* div4 스타일 */
 .div4 {
   width: 100vw;
@@ -140,15 +137,15 @@ body {
 /* 사각형 안의 스타일 */
 .div4-rec {
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 2vw;
   background-color: #E3E6EF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  padding-top: 11vh;
+  padding-bottom: 15vh;
 }
 
 /* 사각형 내 타이틀 컨테이너 */
@@ -161,7 +158,7 @@ body {
 }
 
 .div4-logo-title {
-  font-size: 3.5vw; /* 'BestReview' 크기 */
+  font-size: 3vw; /* 'BestReview' 크기 */
   color: #3A278B; /* 파란색 */
   font-weight: bold;
   font-family: 'KIMM_Bold', sans-serif; /* KIMM 폰트 */
@@ -169,7 +166,7 @@ body {
 }
 
 .div4-title {
-  font-size: 2.5vw; /* '의 기능' 크기 */
+  font-size: 2vw; /* '의 기능' 크기 */
   color: black; /* 검은색 */
   font-weight: bold;
   font-family: 'D2coding'; /* D2coding 폰트 */
@@ -180,7 +177,7 @@ body {
 .div4-subtitle {
   align-items: center;
   text-align: center;
-  font-size: 1.6vw;
+  font-size: 1.2vw;
   color: #000000;
   font-family: 'D2coding';
   margin-bottom: 0vh;
@@ -193,6 +190,7 @@ body {
   justify-content: space-between; /* 박스를 가로로 배치 */
   width: 20%; /* 전체 넓이 */
   margin-top: 2vh; /* 서브타이틀과 사각형 간의 여백 */
+  margin-bottom: 2vh;
 }
 
 /* 태그 박스 */
@@ -226,17 +224,18 @@ body {
   flex-direction: row !important;
   align-items: center;
   text-align: center;
-  margin-bottom: 0vh;
+  gap: 1vw; /* 그룹 간격 조정 */
 }
 
 /* 이미지 & 텍스트 그룹*/
-.icon-container {
+.icon-group {
   display: flex;
+  width: 90%;
+  max-width: 28vw;
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin-bottom: 0vh;
-  gap: 0vh;
 }
 
 /* 아이콘 이미지 스타일 */
@@ -249,7 +248,7 @@ body {
 
 /* 아이콘 제목 텍스트 */
 .div4-icontext {
-  font-size: 1.5vw;
+  font-size: 1vw;
   color: #000000;
   font-family: 'D2coding';
   margin-bottom: 0vh;
@@ -257,7 +256,7 @@ body {
 
 /* 아이콘 설명 텍스트 */
 .div4-description {
-  font-size: 1vw;
+  font-size: 0.6vw;
   color: #000000;
   font-family: 'D2coding';
   margin-bottom: 0vh;
