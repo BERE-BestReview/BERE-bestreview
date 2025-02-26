@@ -2,7 +2,7 @@
   height: 100vh; /* 화면 전체 높이 사용 */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  width: 100%;
 }
 
 .page-container {
@@ -10,7 +10,7 @@
   background-size: contain !important;
   background-repeat: no-repeat;
   width: 100%;
-  height: calc(100vh - 40vh); /* 헤더 높이를 제외한 전체 화면 높이 */
+  height: calc(100vh - 40vh);
   display: flex;
   justify-content: center !important;
   align-items: center !important;
@@ -19,7 +19,6 @@
 }
 
 .title4 {
-  height: 10vh;
   font-family: "D2coding";
   font-size: 3.5vh;
   padding-top: 4.5vh;
@@ -42,11 +41,9 @@
   grid-template-columns: repeat(10, 1fr); /* 10등분된 열 */
   grid-template-rows: repeat(12, 1fr); /* 12등분된 행 */
   position: absolute; /* 부모 요소가 페이지 컨테이너 위에 겹치도록 설정 */
-  top: 0; /* 페이지 컨테이너의 상단에 맞춰서 배치 */
-  left: 0; /* 페이지 컨테이너의 왼쪽에 맞춰서 배치 */
   width: 100%;
-  height: 80%; /* 필요에 따라 조정 */
-  top: 10vh; /* 헤더 높이만큼 내리기 */
+  height: 80vh; /* 필요에 따라 조정 */
+  top: 2vh; /* 헤더 높이만큼 내리기 */
   z-index: 1;
 }
 
@@ -135,4 +132,10 @@
   width: 60%;
   height: 60%;
   justify-self: end;
+  font-family: "D2coding";
+  font-size: 1em;
+  color: #3a278b;
+  border-radius: 0.5vw;
+  background-color: #dcddff;
+  border: 0.2vw solid #3a278b;
 }
