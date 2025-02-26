@@ -1,4 +1,5 @@
 const crawlerService = require('../services/crawlerService');
+const aiService = require('../services/aiService');
 
 const crawlURL = async (req, res) => {
     try {
@@ -9,8 +10,19 @@ const crawlURL = async (req, res) => {
             return res.status(400).json({ error: 'URL을 입력해주세요.' });
         }
 
-        const result = await crawlerService.crawlProductPage(url);
-        res.json(result);
+        // 크롤링 수행
+        const crawlResult = await crawlerService.crawlProductPage(url);
+        
+        // 저장된 JSON 파일을 AI 서버로 전송
+        if (crawlResult.savedFile && crawlResult.reviews.length > 0) {
+            console.log('AI 서버로 리뷰 데이터 전송 시도:', crawlResult.savedFile);
+            const aiResult = await aiService.sendJsonToAI(crawlResult.savedFile);
+            crawlResult.aiResults = aiResult.results;
+        }
+        
+        // 결과 반환
+        res.json(crawlResult);
+        
     } catch (error) {
         console.error('컨트롤러 에러:', error);
         res.status(500).json({ 
