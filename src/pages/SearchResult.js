@@ -4,7 +4,7 @@ import { Header } from "../component/Header";
 import "../component/Css/Search_Result.css";
 import { Progress } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
-import SCBackImg from "../Search_Check_Background0.png";
+import SCBackImg from "../Search_Check_Background.png";
 
 export const SearchResult = () => {
   const location = useLocation();
