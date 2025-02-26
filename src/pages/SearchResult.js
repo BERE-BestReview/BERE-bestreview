@@ -47,36 +47,36 @@ export const SearchResult = () => {
   };
 
   return (
-    <div>
-    <Header />
     <div className="result_body">
+      <Header />
       <div className="title4">조회 결과</div>
       <img src={SCBackImg} alt="" className="page-container" />
-        <div className="parent">
-          <button onClick={button1} className="div11">
-            상세보기
-          </button>
+      <div className="parent">
+        <button onClick={button1} className="div11">
+          상세보기
+        </button>
 
-          <div className="div12">
-            <Progress
-              type="circle"
-              percent={accuracy !== null ? calculateProgress(accuracy) : 0}
-              showInfo={false}
-              strokeWidth={20}
-              format={() =>
-                accuracy !== null ? `${calculateProgress(accuracy)}%` : "Loading..."
-              }
-            />
-          </div>
-          <div className="grade">
-            {accuracy !== null ? calculateGrade(accuracy) : "Loading..."}
-          </div>
-          <div className="div13">{text3 || "No description available"}</div>
-          <div className="div14">{text4 || "No description available"}</div>
-          <div className="div15">{text5 || "No description available"}</div>
+        <div className="div12">
+          <Progress
+            type="circle"
+            percent={accuracy !== null ? calculateProgress(accuracy) : 0}
+            showInfo={false}
+            strokeWidth={20}
+            format={() =>
+              accuracy !== null
+                ? `${calculateProgress(accuracy)}%`
+                : "Loading..."
+            }
+          />
         </div>
-    </div>
-    <Footer />
+        <div className="grade">
+          {accuracy !== null ? calculateGrade(accuracy) : "Loading..."}
+        </div>
+        <div className="div13">{text3 || "No description available"}</div>
+        <div className="div14">{text4 || "No description available"}</div>
+        <div className="div15">{text5 || "No description available"}</div>
+      </div>
+      <Footer />
     </div>
   );
 };
