@@ -1,29 +1,31 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import titlelogo from "../mainreview.png";
 import "./Css/Header.css";
+import usericon from "../usericon.png";
 
 export const Header = () => {
   return (
-    <>
-      <Navbar id="Nav_header">
-        <Container id="container_header">
-          <Navbar.Brand href="/">
-            <img src={titlelogo} alt="mainlogo" id="titlelogo" />
-          </Navbar.Brand>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto" id="text">
-              <Nav.Link href="/ReviewCheck">리뷰조회</Nav.Link>
-              <Nav.Link href="/Record">기록조회</Nav.Link>
-              <Nav.Link href="/Statics">통계정보</Nav.Link>
-              <Nav.Link href="/Login ">로그인</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <hr />
-    </>
+    <nav id="Nav_header">
+      <a href="/" id="titlelogo-link">
+        <img src={titlelogo} alt="mainlogo" id="titlelogo" />
+      </a>
+      <div id="navbar-links">
+        <a href="/ReviewCheck" className="nav-link">
+          리뷰조회
+        </a>
+        <a href="/Record" className="nav-link">
+          기록조회
+        </a>
+        <a href="/Statics" className="nav-link">
+          통계정보
+        </a>
+        {/* <a href="/Login" className="nav-link">
+          로그인
+        </a> */}
+        <a href="/Login" className="nav-link">
+          <img src={usericon} alt="usericon" className="usericon" />{" "}
+        </a>
+      </div>
+    </nav>
   );
 };
