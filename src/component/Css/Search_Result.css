@@ -1,9 +1,8 @@
 .result_body {
-  height: 86vh; /* 화면 전체 높이 사용 */
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 0 10vw;
+  width: 100%;
 }
 
 .page-container {
@@ -11,19 +10,19 @@
   background-size: contain !important;
   background-repeat: no-repeat;
   width: 100%;
-  height: calc(100vh - 40vh); /* 헤더 높이를 제외한 전체 화면 높이 */
+  height: calc(100vh - 40vh);
   display: flex;
   justify-content: center !important;
   align-items: center !important;
-  position: relative; 
-  z-index: -1; 
+  position: relative;
+  z-index: -1;
 }
 
 .title4 {
-  height: 10vh;
   font-family: "D2coding";
   font-size: 3.5vh;
   padding-top: 4.5vh;
+  padding-left: 10vw;
   position: relative;
   font-weight: bold;
 }
@@ -42,12 +41,10 @@
   grid-template-columns: repeat(10, 1fr); /* 10등분된 열 */
   grid-template-rows: repeat(12, 1fr); /* 12등분된 행 */
   position: absolute; /* 부모 요소가 페이지 컨테이너 위에 겹치도록 설정 */
-  top: 0; /* 페이지 컨테이너의 상단에 맞춰서 배치 */
-  left: 0; /* 페이지 컨테이너의 왼쪽에 맞춰서 배치 */
   width: 100%;
-  height: 80%; /* 필요에 따라 조정 */
+  height: 69vh; /* 필요에 따라 조정 */
   top: 10vh; /* 헤더 높이만큼 내리기 */
-  z-index: 1; 
+  z-index: 1;
 }
 
 .div12 {
@@ -57,7 +54,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 3; 
+  z-index: 3;
 }
 
 .grade {
@@ -67,7 +64,7 @@
   transform: translate(-50%, -50%);
   font-size: 30vw;
   font-family: "ghanachoco", sans-serif;
-  z-index: 4; 
+  z-index: 4;
 }
 
 .div13,
@@ -78,7 +75,7 @@
   padding: 15px;
   margin-bottom: 5vh;
   border-radius: 1vw;
-  z-index: 3; 
+  z-index: 3;
 }
 
 /* div13, div14, div15의 그리드 설정 */
@@ -137,8 +134,8 @@
   justify-self: end;
   font-family: "D2coding";
   font-size: 1em;
-  color: #3A278B;
+  color: #3a278b;
   border-radius: 0.5vw;
-  background-color: #DCDDFF;
+  background-color: #dcddff;
   border: 0.2vw solid #3a278b;
 }
