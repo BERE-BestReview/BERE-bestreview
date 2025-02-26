@@ -20,7 +20,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/Review_Check");
+    navigate("/ReviewCheck");
   };
 
   const handleLoginClick = () => {

@@ -14,17 +14,26 @@ export const Statics = () => {
   ];
 
   return (
-    <div className="staticmain">
+    <div>
       <Header />
-      <div className="progress-container">
-        {tasks.map((task, index) => (
-          <div className="static_card" key={index}>
-            <Card className="static_card" title={task.name} bordered={false}>
-              <Progress percent={task.value} showInfo={true} />
-            </Card>
+        <div className="statics-container">
+          <div className="title3">통계 정보</div>
+          <div className="statics-description">
+          사용자들이 조회한 데이터를 기반으로 통계 정보를 제공합니다. <br />
+          최신 결과를 반영하여 자동으로 업데이트되므로, 실시간 변화를 확인할 수 있습니다.
           </div>
-        ))}
-      </div>
+          <div className="staticmain">
+            <div className="progress-container">
+              {tasks.map((task, index) => (
+                <div className="static_card" key={index}>
+                  <Card className="static_card" title={task.name} bordered={false}>
+                    <Progress percent={task.value} showInfo={true} />
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       <Footer />
     </div>
   );
