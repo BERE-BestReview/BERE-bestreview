@@ -1,74 +1,105 @@
+.result_body {
+  height: 86vh; /* 화면 전체 높이 사용 */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 10vw;
+}
+
 .page-container {
-  background-image: url("../../Search_Check_Background.png");
   background-position: center;
-  background-size: contain;
+  background-size: contain !important;
   background-repeat: no-repeat;
   width: 100%;
-  height: 76vh;
+  height: calc(100vh - 40vh); /* 헤더 높이를 제외한 전체 화면 높이 */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative; 
+  z-index: -1; 
+}
+
+.title4 {
+  height: 10vh;
+  font-family: "D2coding";
+  font-size: 3.5vh;
+  padding-top: 4.5vh;
   position: relative;
+  font-weight: bold;
+}
+
+.title4::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 8vw;
+  height: 0.4vh;
+  background-color: #3a278b;
 }
 
 .parent {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(11, 1fr);
-  position: relative;
+  grid-template-columns: repeat(10, 1fr); /* 10등분된 열 */
+  grid-template-rows: repeat(11, 1fr); /* 11등분된 행 */
+  position: absolute; /* 부모 요소가 페이지 컨테이너 위에 겹치도록 설정 */
+  top: 0; /* 페이지 컨테이너의 상단에 맞춰서 배치 */
+  left: 0; /* 페이지 컨테이너의 왼쪽에 맞춰서 배치 */
   width: 100%;
   height: 100%;
-}
-
-.div11 {
-  grid-area: 1 / 1 / 2 / 2;
-  font-size: 1.5vw;
-  text-align: center;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: none;
+  z-index: 1; 
 }
 
 .div12 {
-  grid-area: 4 / 2 / 8 / 5;
+  grid-area: 5 / 2 / 8 / 5;
   position: absolute;
   text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 3; 
 }
 
 .grade {
   position: absolute;
-  top: 53%;
+  top: 55%;
   left: 27%;
   transform: translate(-50%, -50%);
   font-size: 30vw;
   font-family: "ghanachoco", sans-serif;
-  z-index: 2;
+  z-index: 4; 
 }
 
 .div13,
 .div14,
 .div15 {
   border: 0.2vw solid #9fa9e9;
+  background-color: white;
   padding: 15px;
   margin-bottom: 5vh;
   border-radius: 1vw;
+  z-index: 3; 
 }
 
+/* div13, div14, div15의 그리드 설정 */
 .div13 {
-  grid-area: 3 / 6 / 6 / 9;
+  grid-area: 4 / 6 / 6 / 10;
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
 }
 
 .div14 {
-  grid-area: 6 / 6 / 9 / 9;
+  grid-area: 6 / 6 / 8 / 10;
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
 }
 
 .div15 {
-  grid-area: 9 / 6 / 12 / 9;
+  grid-area: 8 / 6 / 10 / 10;
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
 }
 
 .ant-progress-circle {
@@ -76,7 +107,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: 2; /* page-container 위에 위치하도록 z-index 설정 */
   width: 30vw !important;
   height: 31vw !important;
 }
@@ -98,15 +129,9 @@
   stroke-width: 50em !important;
 }
 
-.div13,
-.div14,
-.div15 {
-  grid-column: 6 / 10;
-  font-size: 1rem;
-  padding: 10px;
-  text-align: center;
-}
-
-.result_body {
-  height: 100vh;
+.div11 {
+  grid-area: 3 / 9 / 3 / 10;
+  width: 60%;
+  height: 60%;
+  justify-self: end;
 }

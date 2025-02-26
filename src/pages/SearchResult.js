@@ -4,6 +4,7 @@ import { Header } from "../component/Header";
 import "../component/Css/Search_Result.css";
 import { Progress } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
+import SCBackImg from "../Search_Check_Background0.png";
 
 export const SearchResult = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ export const SearchResult = () => {
   };
 
   const calculateProgress = (accuracy) => {
-    if (accuracy === null) return 0;
+    if (accuracy === null || accuracy === undefined) return 0;
     if (accuracy >= 90) {
       return 100;
     } else if (accuracy >= 80) {
@@ -46,9 +47,11 @@ export const SearchResult = () => {
   };
 
   return (
+    <div>
+    <Header />
     <div className="result_body">
-      <Header />
-      <div className="page-container">
+      <div className="title4">조회 결과</div>
+      <img src={SCBackImg} alt="" className="page-container" />
         <div className="parent">
           <button onClick={button1} className="div11">
             상세보기
@@ -61,21 +64,19 @@ export const SearchResult = () => {
               showInfo={false}
               strokeWidth={20}
               format={() =>
-                accuracy !== null
-                  ? `${calculateProgress(accuracy)}%`
-                  : "Loading..."
+                accuracy !== null ? `${calculateProgress(accuracy)}%` : "Loading..."
               }
             />
           </div>
           <div className="grade">
-            {accuracy !== null ? calculateGrade(accuracy) : ""}
+            {accuracy !== null ? calculateGrade(accuracy) : "Loading..."}
           </div>
-          <div className="div13">{text3 || ""}</div>
-          <div className="div14">{text4 || ""}</div>
-          <div className="div15">{text5 || ""}</div>
+          <div className="div13">{text3 || "No description available"}</div>
+          <div className="div14">{text4 || "No description available"}</div>
+          <div className="div15">{text5 || "No description available"}</div>
         </div>
-      </div>
-      <Footer />
+    </div>
+    <Footer />
     </div>
   );
 };
