@@ -1,3 +1,18 @@
+.check {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 0;
+  gap: 2vw;
+  overflow-y: auto;
+}
 .Review_text {
   text-align: center;
   color: #3a278b;
@@ -19,7 +34,7 @@
   border-radius: 50em;
   background-color: #9fa9e9;
   color: white;
-  padding: 10px;
+  padding: 1vw;
   height: 3.5vw;
   font-size: 2vw;
   margin-bottom: 3vw;
@@ -36,18 +51,6 @@
   color: white;
 }
 
-.check {
-  height: auto;
-  min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-sizing: border-box;
-  position: relative;
-}
-
 .check_form {
   display: flex;
   justify-content: center;
@@ -56,7 +59,7 @@
 }
 
 .check_form button {
-  margin-top: -1vh;
+  margin-top: -1.5vh;
   margin-left: 57vw;
   border-radius: 50%;
   color: #3a278b;
@@ -85,4 +88,7 @@
   background-color: transparent !important;
   border-color: transparent !important;
   color: #3a278b !important;
+}
+.url-input-container {
+  padding-top: 15vh;
 }

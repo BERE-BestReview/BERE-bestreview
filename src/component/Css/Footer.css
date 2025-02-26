@@ -1,16 +1,10 @@
-* {
-  font-family: "D2Coding", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 #Footer_Nav {
   width: 100%;
   border-top: 0.5vh solid #3a278b;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3vh 20vw;
+  padding: 0.5vh 20vw;
 }
 
 #text_footer {

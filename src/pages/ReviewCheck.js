@@ -87,45 +87,43 @@ export const ReviewCheck = () => {
   };
 
   return (
-    <>
+    <div className="check">
       <Header />
-      <div className="check">
+      <div className="url-input-container">
         <img src={logo} alt="img" className="Review_Check_Logo" />
         <h1 className="Review_text">BestReview</h1>
 
-        <div className="url-input-container">
-          <form onSubmit={handleSubmit} className="check_form">
-            <Input
-              className="Review_Check_input"
-              type="url"
-              placeholder="Enter URL"
-              value={url}
-              onChange={handleUrlChange}
-              size="large"
-            />
-            <Button
-              icon={<RightCircleOutlined />}
-              className="button"
-              type="primary"
-              htmlType="submit"
-              disabled={loading}
-            ></Button>
-          </form>
-        </div>
-
-        {loading && (
-          <div className="progress-container">
-            <Spin spinning={loading} percent={progress} fullscreen />
-          </div>
-        )}
-
-        <Modal
-          visible={isModalVisible}
-          error={error}
-          onClose={handleModalClose}
-        />
+        <form onSubmit={handleSubmit} className="check_form">
+          <Input
+            className="Review_Check_input"
+            type="url"
+            placeholder="Enter URL"
+            value={url}
+            onChange={handleUrlChange}
+            size="large"
+          />
+          <Button
+            icon={<RightCircleOutlined />}
+            className="button"
+            type="primary"
+            htmlType="submit"
+            disabled={loading}
+          ></Button>
+        </form>
       </div>
+
+      {loading && (
+        <div className="progress-container">
+          <Spin spinning={loading} percent={progress} fullscreen />
+        </div>
+      )}
+
+      <Modal
+        visible={isModalVisible}
+        error={error}
+        onClose={handleModalClose}
+      />
       <Footer />
-    </>
+    </div>
   );
 };
