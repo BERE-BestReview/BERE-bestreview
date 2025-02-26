@@ -23,6 +23,7 @@
   font-family: "D2coding";
   font-size: 3.5vh;
   padding-top: 4.5vh;
+  padding-left: 10vw;
   position: relative;
   font-weight: bold;
 }
@@ -39,17 +40,18 @@
 .parent {
   display: grid;
   grid-template-columns: repeat(10, 1fr); /* 10등분된 열 */
-  grid-template-rows: repeat(11, 1fr); /* 11등분된 행 */
+  grid-template-rows: repeat(12, 1fr); /* 12등분된 행 */
   position: absolute; /* 부모 요소가 페이지 컨테이너 위에 겹치도록 설정 */
   top: 0; /* 페이지 컨테이너의 상단에 맞춰서 배치 */
   left: 0; /* 페이지 컨테이너의 왼쪽에 맞춰서 배치 */
   width: 100%;
-  height: 100%;
+  height: 80%; /* 필요에 따라 조정 */
+  top: 10vh; /* 헤더 높이만큼 내리기 */
   z-index: 1;
 }
 
 .div12 {
-  grid-area: 5 / 2 / 8 / 5;
+  grid-area: 4 / 2 / 12 / 5;
   position: absolute;
   text-align: center;
   top: 50%;
@@ -60,7 +62,7 @@
 
 .grade {
   position: absolute;
-  top: 55%;
+  top: 64%;
   left: 27%;
   transform: translate(-50%, -50%);
   font-size: 30vw;
@@ -81,21 +83,21 @@
 
 /* div13, div14, div15의 그리드 설정 */
 .div13 {
-  grid-area: 4 / 6 / 6 / 10;
+  grid-area: 4 / 6 / 7 / 10;
   font-size: 1rem;
   padding: 10px;
   text-align: center;
 }
 
 .div14 {
-  grid-area: 6 / 6 / 8 / 10;
+  grid-area: 7 / 6 / 10 / 10;
   font-size: 1rem;
   padding: 10px;
   text-align: center;
 }
 
 .div15 {
-  grid-area: 8 / 6 / 10 / 10;
+  grid-area: 10 / 6 / 13 / 10;
   font-size: 1rem;
   padding: 10px;
   text-align: center;
