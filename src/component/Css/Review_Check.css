@@ -2,7 +2,7 @@
   text-align: center;
   color: #3a278b;
   font-family: "KIMM_Bold", sans-serif;
-  font-size: 5vw;
+  font-size: 3rem;
   margin-bottom: 2vh;
   padding-top: 3vh;
 }
@@ -10,12 +10,12 @@
 .Review_Check_Logo {
   display: block;
   margin: 0 auto;
-  width: 30vh;
-  height: 30vh;
+  width: 10vw;
+  height: 18vh;
 }
 
 .Review_Check_input {
-  width: 60vw;
+  width: 40vw;
   border-radius: 50em;
   background-color: #9fa9e9;
   color: white;

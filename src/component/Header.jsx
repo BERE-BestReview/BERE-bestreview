@@ -9,23 +9,21 @@ export const Header = () => {
       <a href="/" id="titlelogo-link">
         <img src={titlelogo} alt="mainlogo" id="titlelogo" />
       </a>
-      <div id="navbar-links">
-        <a href="/ReviewCheck" className="nav-link">
-          리뷰조회
-        </a>
-        <a href="/Record" className="nav-link">
-          기록조회
-        </a>
-        <a href="/Statics" className="nav-link">
-          통계정보
-        </a>
-        {/* <a href="/Login" className="nav-link">
+      <a href="/ReviewCheck" className="nav-link">
+        리뷰조회
+      </a>
+      <a href="/Record" className="nav-link">
+        기록조회
+      </a>
+      <a href="/Statics" className="nav-link">
+        통계정보
+      </a>
+      {/* <a href="/Login" className="nav-link">
           로그인
         </a> */}
-        <a href="/Login" className="nav-link">
-          <img src={usericon} alt="usericon" className="usericon" />{" "}
-        </a>
-      </div>
+      <a href="/Login" className="nav-link">
+        <img src={usericon} alt="usericon" className="usericon" />{" "}
+      </a>
     </nav>
   );
 };

@@ -1,22 +1,19 @@
 #Nav_header {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  align-items: end;
   width: 100%;
-  padding: 3vh 0;
-  padding-left: 10vw;
+  padding: 3vh 8vw;
   border-bottom: 0.5vh solid #3a278b;
 }
 
 #titlelogo {
-  height: 3vw;
+  height: 6vh;
 }
 
 #navbar-links {
-  padding-top: 2.5vh;
-  padding-left: 10vw;
   display: flex;
-  gap: 10vw;
+  gap: 5vw;
   align-items: center;
 }
 
@@ -30,6 +27,7 @@
 .nav-link:hover {
   color: #3a278b;
 }
+
 .usericon {
   width: 2.5vw;
   height: 2.5vw;
