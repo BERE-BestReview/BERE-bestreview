@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import titlelogo from "../mainreview.png";
 import "./Css/Header.css";
 import usericon from "../usericon.png";
@@ -6,24 +7,22 @@ import usericon from "../usericon.png";
 export const Header = () => {
   return (
     <nav id="Nav_header">
-      <a href="/" id="titlelogo-link">
+      <Link to="/" id="titlelogo-link">
+        {" "}
         <img src={titlelogo} alt="mainlogo" id="titlelogo" />
-      </a>
-      <a href="/ReviewCheck" className="nav-link">
+      </Link>
+      <Link to="/ReviewCheck" className="nav-link">
         리뷰조회
-      </a>
-      <a href="/Record" className="nav-link">
+      </Link>
+      <Link to="/Record" className="nav-link">
         기록조회
-      </a>
-      <a href="/Statics" className="nav-link">
+      </Link>
+      <Link to="/Statics" className="nav-link">
         통계정보
-      </a>
-      {/* <a href="/Login" className="nav-link">
-          로그인
-        </a> */}
-      <a href="/Login" className="nav-link">
-        <img src={usericon} alt="usericon" className="usericon" />{" "}
-      </a>
+      </Link>
+      <Link to="/Login" className="nav-link">
+        <img src={usericon} alt="usericon" className="usericon" />
+      </Link>
     </nav>
   );
 };

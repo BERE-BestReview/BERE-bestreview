@@ -81,7 +81,7 @@ body {
   display: flex;
   justify-content: flex-end; /* 오른쪽 정렬 */
   align-items: center;
-  height: 100vh;
+
   width: 50%; /* 사각형이 화면 오른쪽에 배치되도록 */
 }
 
