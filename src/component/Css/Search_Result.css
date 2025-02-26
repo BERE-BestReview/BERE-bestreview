@@ -134,4 +134,10 @@
   width: 60%;
   height: 60%;
   justify-self: end;
+  font-family: "D2coding";
+  font-size: 1em;
+  color: #3A278B;
+  border-radius: 0.5vw;
+  background-color: #DCDDFF;
+  border: 0.2vw solid #3a278b;
 }
