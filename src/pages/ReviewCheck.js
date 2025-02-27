@@ -55,12 +55,16 @@ export const ReviewCheck = () => {
 
       console.log("Response from backend:", response.data);
 
-      // 데이터 유효성 검사
-      if (!response.data || !response.data.reviews) {
+      // 데이터 유효성 검사 (필요한 모든 값이 존재하는지 확인)
+      if (
+        !response.data ||
+        response.data.reviews == null ||
+        response.data.accuracy == null
+      ) {
         throw new Error("서버에서 유효한 데이터를 받지 못했습니다.");
       }
 
-      // 백엔드에서 받은 데이터를 기반으로 페이지 이동
+      // 정상 데이터일 경우 페이지 이동
       navigate("/SearchResult", {
         state: {
           reviews: response.data.reviews,
@@ -71,16 +75,21 @@ export const ReviewCheck = () => {
       console.error("There was an error submitting the URL:", error);
 
       // 에러 메시지 설정
-      if (error.response) {
-        setError(
-          error.response.data.message || "요청 처리 중 오류가 발생했습니다."
-        );
+      let errorMessage = "요청 처리 중 오류가 발생했습니다.";
+
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        errorMessage = error.response.data.message;
       } else if (error.request) {
-        setError("서버에 응답이 없습니다. 다시 시도해주세요.");
-      } else {
-        setError(error.message || "요청을 보내는 중 오류가 발생했습니다.");
+        errorMessage = "서버에 응답이 없습니다. 다시 시도해주세요.";
+      } else if (error.message) {
+        errorMessage = error.message;
       }
 
+      setError(errorMessage);
       setIsModalVisible(true);
     } finally {
       setLoading(false);

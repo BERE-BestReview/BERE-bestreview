@@ -42,7 +42,7 @@ export const SearchResult = () => {
 
   const button1 = () => {
     navigate("/SearchResultDetails", {
-      state: { reviews, accuracy, text3, text4, text5 },
+      state: { reviews, accuracy },
     });
   };
 
