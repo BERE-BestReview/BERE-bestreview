@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "antd": "^5.24.0",
-    "axios": "^1.7.9",
+    "axios": "^0.27.2",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
+    "customize-cra": "^1.0.0",
     "install": "^0.13.0",
     "npm": "^11.1.0",
     "react": "^19.0.0",
@@ -41,6 +42,8 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^3.5.0"
+    "crypto-browserify": "^3.12.1",
+    "prettier": "^3.5.0",
+    "react-app-rewired": "^2.2.1"
   }
 }
