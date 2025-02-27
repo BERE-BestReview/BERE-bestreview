@@ -33,7 +33,7 @@ const saveResult = async (result, title) => {
     const currentDate = new Date().toISOString().replace(/[:.]/g, '-');
     const fileName = `${sanitizedTitle}_${currentDate}.json`;
 
-    const saveDirectory = path.join(__dirname, '..', 'documents', 'result');
+    const saveDirectory = path.join(__dirname, '..', '..', 'documents', 'result');
     await fs.mkdir(saveDirectory, { recursive: true });
 
     const filePath = path.join(saveDirectory, fileName);
