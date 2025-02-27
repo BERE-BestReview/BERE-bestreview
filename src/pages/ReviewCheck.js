@@ -55,32 +55,30 @@ export const ReviewCheck = () => {
 
       console.log("Response from backend:", response.data);
 
+      // 데이터 유효성 검사
+      if (!response.data || !response.data.reviews) {
+        throw new Error("서버에서 유효한 데이터를 받지 못했습니다.");
+      }
+
       // 백엔드에서 받은 데이터를 기반으로 페이지 이동
       navigate("/SearchResult", {
         state: {
           reviews: response.data.reviews,
           accuracy: response.data.accuracy,
-          text3: response.data.text3,
-          text4: response.data.text4,
-          text5: response.data.text5,
-          url: url,
         },
       });
     } catch (error) {
       console.error("There was an error submitting the URL:", error);
 
-      // 에러 핸들링
+      // 에러 메시지 설정
       if (error.response) {
-        // 서버에서 응답을 보낸 경우 (400, 500 에러 등)
         setError(
           error.response.data.message || "요청 처리 중 오류가 발생했습니다."
         );
       } else if (error.request) {
-        // 요청은 보내졌지만 응답이 없는 경우 (서버 다운 등)
         setError("서버에 응답이 없습니다. 다시 시도해주세요.");
       } else {
-        // 요청 설정 중 오류 발생
-        setError("요청을 보내는 중 오류가 발생했습니다.");
+        setError(error.message || "요청을 보내는 중 오류가 발생했습니다.");
       }
 
       setIsModalVisible(true);
