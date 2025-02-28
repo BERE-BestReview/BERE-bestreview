@@ -16,10 +16,8 @@ export const ReviewCheck = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
 
-  // URL 입력값 처리
   const handleUrlChange = (e) => setUrl(e.target.value);
 
-  // URL 유효성 검사
   const validateUrl = (url) => {
     try {
       new URL(url);
@@ -29,7 +27,6 @@ export const ReviewCheck = () => {
     }
   };
 
-  // 데이터 요청 및 처리
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -46,36 +43,9 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5001/URL", { url });
+      await axios.post("http://localhost:5001/URL", { url });
 
-      // 응답이 없거나 데이터가 비어 있으면 에러 처리
-      if (!response.data || Object.keys(response.data).length === 0) {
-        throw new Error("서버에서 유효한 응답을 받지 못했습니다.");
-      }
-
-      // 필요한 데이터가 모두 있는지 확인
-      const { accuracy, summary, original_review, fake_or_real, reviews } =
-        response.data;
-      if (
-        !accuracy ||
-        !summary ||
-        !original_review ||
-        !fake_or_real ||
-        !reviews
-      ) {
-        throw new Error("서버 응답 데이터가 올바르지 않습니다.");
-      }
-
-      // 모든 데이터가 정상적으로 있으면 페이지 이동
-      navigate("/SearchResult", {
-        state: {
-          accuracy,
-          summary,
-          original_review,
-          fake_or_real,
-          reviews,
-        },
-      });
+      navigate("/SearchResult"); // 데이터 전달 없이 이동
     } catch (error) {
       console.error("Error submitting the URL:", error);
       setError(
@@ -87,9 +57,6 @@ export const ReviewCheck = () => {
       setLoading(false);
     }
   };
-
-  // 모달 닫기
-  const handleModalClose = () => setIsModalVisible(false);
 
   return (
     <div className="check">
@@ -117,16 +84,12 @@ export const ReviewCheck = () => {
         </form>
       </div>
 
-      {loading && (
-        <div className="progress-container">
-          <Spin spinning={loading} fullscreen />
-        </div>
-      )}
+      {loading && <Spin spinning={loading} fullscreen />}
 
       <Modal
         visible={isModalVisible}
         error={error}
-        onClose={handleModalClose}
+        onClose={() => setIsModalVisible(false)}
       />
       <Footer />
     </div>
