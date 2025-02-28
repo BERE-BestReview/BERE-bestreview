@@ -43,7 +43,7 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:5001/URL", { url });
+      await axios.post("http://localhost:5001/url", { url });
 
       navigate("/SearchResult"); // 데이터 전달 없이 이동
     } catch (error) {
