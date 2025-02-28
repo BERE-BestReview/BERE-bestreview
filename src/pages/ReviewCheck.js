@@ -11,6 +11,7 @@ import axios from "axios";
 
 export const ReviewCheck = () => {
   const [url, setUrl] = useState("");
+  const [fileName, setFileName] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -19,6 +20,11 @@ export const ReviewCheck = () => {
   // URL 입력 변경 핸들러
   const handleUrlChange = (e) => {
     setUrl(e.target.value);
+  };
+
+  // 파일 이름 입력 변경 핸들러
+  const handleFileNameChange = (e) => {
+    setFileName(e.target.value);
   };
 
   // URL 유효성 검사 함수
@@ -48,27 +54,34 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // axios를 사용하여 POST 요청 보내기
+      // POST 요청 보내기
       const response = await axios.post("http://localhost:3000/api/URL", {
         url,
       });
 
       console.log("Response from backend:", response.data);
 
-      // 데이터 유효성 검사 (필요한 모든 값이 존재하는지 확인)
-      if (
-        !response.data ||
-        response.data.reviews == null ||
-        response.data.accuracy == null
-      ) {
+      // 데이터 유효성 검사 (reviews와 accuracy가 존재해야 함)
+      if (!response.data || response.data.reviews == null) {
         throw new Error("서버에서 유효한 데이터를 받지 못했습니다.");
+      }
+
+      // 파일 데이터를 추가로 가져오기
+      const fileResponse = await axios.get(
+        `http://localhost:3000/file/${fileName}`
+      );
+      console.log("File Data from backend:", fileResponse.data);
+
+      // 파일 데이터도 유효성 검사
+      if (!fileResponse.data || fileResponse.data.accuracy == null) {
+        throw new Error("파일 데이터가 유효하지 않습니다.");
       }
 
       // 정상 데이터일 경우 페이지 이동
       navigate("/SearchResult", {
         state: {
           reviews: response.data.reviews,
-          accuracy: response.data.accuracy,
+          accuracy: fileResponse.data.accuracy, // 파일 데이터에서 accuracy 가져오기
         },
       });
     } catch (error) {
@@ -115,6 +128,14 @@ export const ReviewCheck = () => {
             placeholder="Enter URL"
             value={url}
             onChange={handleUrlChange}
+            size="large"
+          />
+          <Input
+            className="Review_Check_input"
+            type="text"
+            placeholder="Enter File Name"
+            value={fileName}
+            onChange={handleFileNameChange}
             size="large"
           />
           <Button
