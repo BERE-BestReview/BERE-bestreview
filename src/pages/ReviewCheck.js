@@ -11,7 +11,6 @@ import axios from "axios";
 
 export const ReviewCheck = () => {
   const [url, setUrl] = useState("");
-  const [fileName, setFileName] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,11 +19,6 @@ export const ReviewCheck = () => {
   // URL 입력 변경 핸들러
   const handleUrlChange = (e) => {
     setUrl(e.target.value);
-  };
-
-  // 파일 이름 입력 변경 핸들러
-  const handleFileNameChange = (e) => {
-    setFileName(e.target.value);
   };
 
   // URL 유효성 검사 함수
@@ -54,25 +48,20 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // POST 요청 보내기
-      const response = await axios.post("http://localhost:3000/api/URL", {
-        url,
-      });
+      // URL에서 fileName 추출 (예: URL 끝부분에서 파일 이름을 추출)
+      const fileName = url.split("/").pop();
 
-      console.log("Response from backend:", response.data);
-
-      // 데이터 유효성 검사 (reviews와 accuracy가 존재해야 함)
-      if (!response.data || response.data.reviews == null) {
-        throw new Error("서버에서 유효한 데이터를 받지 못했습니다.");
+      if (!fileName) {
+        throw new Error("URL에서 fileName을 추출할 수 없습니다.");
       }
 
-      // 파일 데이터를 추가로 가져오기
-      const fileResponse = await axios.get(
-        `http://localhost:3000/file/${fileName}`
-      );
+      // fileName을 사용해 파일 데이터 요청
+      const fileUrl = `http://localhost:3000/file/${fileName}`;
+      const fileResponse = await axios.get(fileUrl);
+
       console.log("File Data from backend:", fileResponse.data);
 
-      // 파일 데이터도 유효성 검사
+      // 파일 데이터 유효성 검사
       if (!fileResponse.data || fileResponse.data.accuracy == null) {
         throw new Error("파일 데이터가 유효하지 않습니다.");
       }
@@ -80,7 +69,6 @@ export const ReviewCheck = () => {
       // 정상 데이터일 경우 페이지 이동
       navigate("/SearchResult", {
         state: {
-          reviews: response.data.reviews,
           accuracy: fileResponse.data.accuracy, // 파일 데이터에서 accuracy 가져오기
         },
       });
@@ -128,14 +116,6 @@ export const ReviewCheck = () => {
             placeholder="Enter URL"
             value={url}
             onChange={handleUrlChange}
-            size="large"
-          />
-          <Input
-            className="Review_Check_input"
-            type="text"
-            placeholder="Enter File Name"
-            value={fileName}
-            onChange={handleFileNameChange}
             size="large"
           />
           <Button
