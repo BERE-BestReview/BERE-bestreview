@@ -47,9 +47,9 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // 데이터 요청
-      const response = await axios.post("http://localhost:5001/result", {
-        url,
+      // axios를 사용하여 데이터 요청
+      const response = await axios.post("http://localhost:3000/URL", {
+        url, // 요청 본문에 URL 데이터 포함
       });
 
       // 서버로부터 데이터를 받아온 후, SearchResult로 전달
