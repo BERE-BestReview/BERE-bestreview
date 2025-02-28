@@ -52,20 +52,20 @@ export const ReviewCheck = () => {
         url,
       });
 
-      // 응답 데이터 처리
-      const { accuracy, fake_or_real, original_review } = response.data || {};
+      // 서버로부터 데이터를 받아온 후, SearchResult로 전달
+      const { accuracy, summary, original_review, fake_or_real, reviews } =
+        response.data;
 
-      if (typeof accuracy !== "number")
-        throw new Error("accuracy 값이 숫자가 아닙니다.");
-
-      // fake_or_real이 "real"인 경우만 리뷰 저장
-      const realReviews =
-        fake_or_real?.toLowerCase() === "real"
-          ? [{ content: original_review }]
-          : [];
-
-      // 결과 페이지로 이동
-      navigate("/SearchResult");
+      // 데이터가 유효하면 SearchResult 페이지로 데이터를 전달
+      navigate("/SearchResult", {
+        state: {
+          accuracy,
+          summary,
+          original_review,
+          fake_or_real,
+          reviews,
+        },
+      });
     } catch (error) {
       console.error("Error submitting the URL:", error);
       setError(

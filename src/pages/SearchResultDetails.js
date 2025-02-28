@@ -33,7 +33,6 @@ export const SearchResultDetails = () => {
   return (
     <div className="result-container_body">
       <Header />
-
       {loading ? (
         <div>Loading...</div>
       ) : reviews && reviews.length > 0 ? (
@@ -79,7 +78,6 @@ export const SearchResultDetails = () => {
       ) : (
         <Empty className="empty" description="No Real Reviews Available" />
       )}
-
       <Footer />
     </div>
   );

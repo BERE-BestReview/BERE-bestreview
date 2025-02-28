@@ -9,12 +9,11 @@ import axios from "axios"; // axios 임포트
 
 export const SearchResult = () => {
   const navigate = useNavigate();
-
   const [accuracy, setAccuracy] = useState(null);
   const [summary, setSummary] = useState("");
   const [originalReview, setOriginalReview] = useState("");
   const [fakeOrReal, setFakeOrReal] = useState("");
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState(null); // reviews를 객체로 초기화
 
   // API 호출하여 데이터 가져오기
   useEffect(() => {
@@ -29,7 +28,7 @@ export const SearchResult = () => {
           setSummary(summary || "No description available");
           setOriginalReview(original_review || "No review available");
           setFakeOrReal(fake_or_real || "Unknown");
-          setReviews(reviews || []); // reviews가 배열로 있다고 가정
+          setReviews(reviews || {}); // reviews는 객체로 설정
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -39,33 +38,13 @@ export const SearchResult = () => {
     fetchData();
   }, []);
 
-  const calculateGrade = (accuracy) => {
-    if (accuracy >= 90) {
-      return "A";
-    } else if (accuracy >= 80) {
-      return "B";
-    } else if (accuracy >= 70) {
-      return "C";
-    } else if (accuracy >= 60) {
-      return "D";
-    } else {
-      return "F";
-    }
-  };
-
   const calculateProgress = (accuracy) => {
     if (accuracy === null || accuracy === undefined) return 0;
-    if (accuracy >= 90) {
-      return 100;
-    } else if (accuracy >= 80) {
-      return 80;
-    } else if (accuracy >= 70) {
-      return 70;
-    } else if (accuracy >= 60) {
-      return 60;
-    } else {
-      return 50;
-    }
+    if (accuracy >= 90) return 100;
+    if (accuracy >= 80) return 80;
+    if (accuracy >= 70) return 70;
+    if (accuracy >= 60) return 60;
+    return 50;
   };
 
   const button1 = () => {
@@ -98,7 +77,17 @@ export const SearchResult = () => {
           />
         </div>
         <div className="grade">
-          {accuracy !== null ? calculateGrade(accuracy) : "Loading..."}
+          {accuracy !== null
+            ? accuracy >= 90
+              ? "A"
+              : accuracy >= 80
+                ? "B"
+                : accuracy >= 70
+                  ? "C"
+                  : accuracy >= 60
+                    ? "D"
+                    : "F"
+            : "Loading..."}
         </div>
         <div className="div13">{summary}</div>
         <div className="div14">{originalReview}</div>
