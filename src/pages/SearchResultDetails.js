@@ -1,19 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../component/Footer";
 import { Header } from "../component/Header";
 import { List, Card, Rate, Empty } from "antd";
-import { useLocation } from "react-router-dom";
+import axios from "axios";
 import "../component/Css/Search_Result_Details.css";
 
 export const SearchResultDetails = () => {
-  const location = useLocation();
-  const { reviews } = location.state || {};
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("/result");
+
+        const filteredReviews = response.data.reviews.filter(
+          (review) => review.fake_or_real?.toLowerCase() === "real"
+        );
+
+        setReviews(filteredReviews);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="result-container_body">
       <Header />
 
-      {reviews && reviews.length > 0 ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : reviews && reviews.length > 0 ? (
         <List
           className="Detail_List"
           itemLayout="vertical"
@@ -54,8 +77,9 @@ export const SearchResultDetails = () => {
           )}
         />
       ) : (
-        <Empty className="empty" description="No Reviews Available" />
+        <Empty className="empty" description="No Real Reviews Available" />
       )}
+
       <Footer />
     </div>
   );

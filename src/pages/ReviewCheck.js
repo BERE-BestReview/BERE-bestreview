@@ -16,10 +16,10 @@ export const ReviewCheck = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
 
-  const handleUrlChange = (e) => {
-    setUrl(e.target.value);
-  };
+  // URL 입력값 처리
+  const handleUrlChange = (e) => setUrl(e.target.value);
 
+  // URL 유효성 검사
   const validateUrl = (url) => {
     try {
       new URL(url);
@@ -29,10 +29,13 @@ export const ReviewCheck = () => {
     }
   };
 
+  // 데이터 요청 및 처리
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setIsModalVisible(false);
 
+    // 유효하지 않은 URL인 경우
     if (!validateUrl(url)) {
       setError(
         "유효하지 않은 URL입니다. http:// 또는 https://로 시작해야 합니다."
@@ -44,70 +47,46 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // 백엔드로 URL 전송 (POST 요청)
-      const response = await axios.post("http://localhost:3000/URL", {
+      // 데이터 요청
+      const response = await axios.post("http://localhost:5001/result", {
         url,
       });
 
-      console.log("Response from backend:", response.data);
+      // 응답 데이터 처리
+      const { accuracy, fake_or_real, original_review } = response.data || {};
 
-      // 서버 응답에서 fileName 추출 (예: URL 끝부분에서 파일 이름을 추출)
-      const fileName = response.data.fileName; // 서버에서 반환한 fileName 사용
+      if (typeof accuracy !== "number")
+        throw new Error("accuracy 값이 숫자가 아닙니다.");
 
-      if (!fileName) {
-        throw new Error("서버에서 fileName을 추출할 수 없습니다.");
-      }
+      // fake_or_real이 "real"인 경우만 리뷰 저장
+      const realReviews =
+        fake_or_real?.toLowerCase() === "real"
+          ? [{ content: original_review }]
+          : [];
 
-      // fileName을 사용해 파일 데이터 요청
-      const fileUrl = `http://localhost:3000/file/${fileName}`;
-      const fileResponse = await axios.get(fileUrl);
-
-      console.log("File Data from backend:", fileResponse.data);
-
-      // 파일 데이터 유효성 검사
-      if (!fileResponse.data || fileResponse.data.accuracy == null) {
-        throw new Error("파일 데이터가 유효하지 않습니다.");
-      }
-
-      // 정상 데이터일 경우 페이지 이동
-      navigate("/SearchResult", {
-        state: {
-          accuracy: fileResponse.data.accuracy, // 파일 데이터에서 accuracy 가져오기
-        },
-      });
+      // 결과 페이지로 이동
+      navigate("/SearchResult");
     } catch (error) {
-      console.error("There was an error submitting the URL:", error);
-
-      let errorMessage = "요청 처리 중 오류가 발생했습니다.";
-
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message
-      ) {
-        errorMessage = error.response.data.message;
-      } else if (error.request) {
-        errorMessage = "서버에 응답이 없습니다. 다시 시도해주세요.";
-      } else if (error.message) {
-        errorMessage = error.message;
-      }
-
-      setError(errorMessage);
+      console.error("Error submitting the URL:", error);
+      setError(
+        error.response?.data?.message ||
+          error.message ||
+          "요청 처리 중 오류가 발생했습니다."
+      );
       setIsModalVisible(true);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleModalClose = () => {
-    setIsModalVisible(false);
-  };
+  // 모달 닫기
+  const handleModalClose = () => setIsModalVisible(false);
 
   return (
     <div className="check">
       <Header />
       <div className="url-input-container">
-        <img src={logo} alt="img" className="Review_Check_Logo" />
+        <img src={logo} alt="Logo" className="Review_Check_Logo" />
         <h1 className="Review_text">BestReview</h1>
 
         <form onSubmit={handleSubmit} className="check_form">
@@ -125,7 +104,7 @@ export const ReviewCheck = () => {
             type="primary"
             htmlType="submit"
             disabled={loading}
-          ></Button>
+          />
         </form>
       </div>
 
