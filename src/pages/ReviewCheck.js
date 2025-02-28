@@ -35,7 +35,6 @@ export const ReviewCheck = () => {
     setError(null);
     setIsModalVisible(false);
 
-    // 유효하지 않은 URL인 경우
     if (!validateUrl(url)) {
       setError(
         "유효하지 않은 URL입니다. http:// 또는 https://로 시작해야 합니다."
@@ -47,16 +46,27 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // axios를 사용하여 데이터 요청
-      const response = await axios.post("http://localhost:3000/URL", {
-        url, // 요청 본문에 URL 데이터 포함
-      });
+      const response = await axios.post("http://localhost:5001/URL", { url });
 
-      // 서버로부터 데이터를 받아온 후, SearchResult로 전달
+      // 응답이 없거나 데이터가 비어 있으면 에러 처리
+      if (!response.data || Object.keys(response.data).length === 0) {
+        throw new Error("서버에서 유효한 응답을 받지 못했습니다.");
+      }
+
+      // 필요한 데이터가 모두 있는지 확인
       const { accuracy, summary, original_review, fake_or_real, reviews } =
         response.data;
+      if (
+        !accuracy ||
+        !summary ||
+        !original_review ||
+        !fake_or_real ||
+        !reviews
+      ) {
+        throw new Error("서버 응답 데이터가 올바르지 않습니다.");
+      }
 
-      // 데이터가 유효하면 SearchResult 페이지로 데이터를 전달
+      // 모든 데이터가 정상적으로 있으면 페이지 이동
       navigate("/SearchResult", {
         state: {
           accuracy,
@@ -70,8 +80,7 @@ export const ReviewCheck = () => {
       console.error("Error submitting the URL:", error);
       setError(
         error.response?.data?.message ||
-          error.message ||
-          "요청 처리 중 오류가 발생했습니다."
+          "서버에서 응답을 받지 못했습니다. 다시 시도해주세요."
       );
       setIsModalVisible(true);
     } finally {
