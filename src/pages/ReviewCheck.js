@@ -16,12 +16,10 @@ export const ReviewCheck = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
 
-  // URL 입력 변경 핸들러
   const handleUrlChange = (e) => {
     setUrl(e.target.value);
   };
 
-  // URL 유효성 검사 함수
   const validateUrl = (url) => {
     try {
       new URL(url);
@@ -31,12 +29,10 @@ export const ReviewCheck = () => {
     }
   };
 
-  // URL 제출 핸들러
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
-    // URL 유효성 검사
     if (!validateUrl(url)) {
       setError(
         "유효하지 않은 URL입니다. http:// 또는 https://로 시작해야 합니다."
@@ -48,11 +44,18 @@ export const ReviewCheck = () => {
     setLoading(true);
 
     try {
-      // URL에서 fileName 추출 (예: URL 끝부분에서 파일 이름을 추출)
-      const fileName = url.split("/").pop();
+      // 백엔드로 URL 전송 (POST 요청)
+      const response = await axios.post("http://localhost:3000/URL", {
+        url,
+      });
+
+      console.log("Response from backend:", response.data);
+
+      // 서버 응답에서 fileName 추출 (예: URL 끝부분에서 파일 이름을 추출)
+      const fileName = response.data.fileName; // 서버에서 반환한 fileName 사용
 
       if (!fileName) {
-        throw new Error("URL에서 fileName을 추출할 수 없습니다.");
+        throw new Error("서버에서 fileName을 추출할 수 없습니다.");
       }
 
       // fileName을 사용해 파일 데이터 요청
@@ -75,7 +78,6 @@ export const ReviewCheck = () => {
     } catch (error) {
       console.error("There was an error submitting the URL:", error);
 
-      // 에러 메시지 설정
       let errorMessage = "요청 처리 중 오류가 발생했습니다.";
 
       if (
@@ -97,7 +99,6 @@ export const ReviewCheck = () => {
     }
   };
 
-  // 모달 닫기 핸들러
   const handleModalClose = () => {
     setIsModalVisible(false);
   };
