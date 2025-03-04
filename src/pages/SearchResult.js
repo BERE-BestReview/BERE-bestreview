@@ -34,7 +34,7 @@ export const SearchResult = () => {
       <img src={SCBackImg} alt="" className="page-container" />
 
       {loading ? (
-        <div>Loading...</div>
+        <div className="loding">Loading...</div>
       ) : data ? (
         <div className="parent">
           <button
@@ -65,7 +65,7 @@ export const SearchResult = () => {
           <div className="div15">{data.fake_or_real}</div>
         </div>
       ) : (
-        <div>데이터를 불러올 수 없습니다.</div>
+        <div className="error-message">데이터를 불러올 수 없습니다.</div>
       )}
       <Footer />
     </div>
