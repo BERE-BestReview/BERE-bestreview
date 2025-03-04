@@ -32,7 +32,7 @@ export const SearchResultDetails = () => {
     <div className="result-container_body">
       <Header />
       {loading ? (
-        <div>Loading...</div>
+        <div className="loding_resultD">Loading...</div>
       ) : reviews.length > 0 ? (
         <List
           dataSource={reviews}

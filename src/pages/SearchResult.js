@@ -34,7 +34,7 @@ export const SearchResult = () => {
       <img src={SCBackImg} alt="" className="page-container" />
 
       {loading ? (
-        <div className="loding">Loading...</div>
+        <div className="loding_result">Loading...</div>
       ) : data ? (
         <div className="parent">
           <button
