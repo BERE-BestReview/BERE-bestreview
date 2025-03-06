@@ -3,20 +3,22 @@ const aiService = require('../services/aiService');
 
 const crawlURL = async (req, res) => {
     try {
-        console.log('크롤링 요청 받음:', req.body);
+        console.log('🚀 크롤링 요청 받음:', req.body);
         const { url } = req.body;
 
         if (!url) {
             return res.status(400).json({ error: 'URL을 입력해주세요.' });
         }
 
+        // ✅ 1. 크롤링 수행
         const crawlResult = await crawlerService.crawlProductPage(url);
-        console.log('크롤링 완료, 저장된 파일:', crawlResult.savedFile);
+        console.log('✅ 크롤링 완료, 저장된 파일:', crawlResult.savedFile);
 
+        // ✅ 2. AI 서버로 데이터 전송 여부 확인
         if (crawlResult.savedFile && crawlResult.reviews.length > 0) {
-            console.log('AI 서버로 데이터 전송 시작:', crawlResult.savedFile);
+            console.log('🚀 AI 서버로 데이터 전송 시작:', crawlResult.savedFile);
             const aiResult = await aiService.sendJsonToAI(crawlResult.savedFile);
-            console.log('AI 서버 응답:', aiResult);
+            console.log('✅ AI 서버 응답:', aiResult);
             crawlResult.aiResults = aiResult.results;
         } else {
             console.log('⚠️ AI 서버로 보낼 데이터가 없음');

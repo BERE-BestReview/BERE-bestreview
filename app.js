@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-const url = require('./routes/url');
+const url = require('./src/routes/url');
 const result = require('./src/routes/result');
 
 app.use('/url', url);
